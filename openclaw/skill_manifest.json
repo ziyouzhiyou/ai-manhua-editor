@@ -1,0 +1,87 @@
+{
+  "name": "ai-manhua-editor",
+  "version": "1.0.0",
+  "description": "AI-powered comic drama (manhua) video generation system for OpenClaw",
+  "author": "AI Creator",
+  "license": "MIT",
+  "entry_point": "src.skills.openclaw_skill:AIManhuaSkill",
+  "commands": [
+    {
+      "name": "generate",
+      "description": "Generate AI manhua video from script",
+      "parameters": {
+        "script": {
+          "type": "string",
+          "required": true,
+          "description": "Script text or file path"
+        },
+        "workflow": {
+          "type": "string",
+          "required": false,
+          "default": "standard",
+          "enum": ["fast", "standard", "premium"]
+        },
+        "style": {
+          "type": "string",
+          "required": false,
+          "default": "anime",
+          "enum": ["anime", "cinematic_anime", "manhua", "chibi", "realistic", "watercolor"]
+        },
+        "output_dir": {
+          "type": "string",
+          "required": false,
+          "description": "Output directory path"
+        }
+      }
+    },
+    {
+      "name": "status",
+      "description": "Check project status",
+      "parameters": {
+        "project_id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    {
+      "name": "list-projects",
+      "description": "List all projects",
+      "parameters": {}
+    },
+    {
+      "name": "delete-project",
+      "description": "Delete a project",
+      "parameters": {
+        "project_id": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  ],
+  "permissions": [
+    "file_read",
+    "file_write",
+    "network",
+    "process_spawn"
+  ],
+  "dependencies": [
+    "ffmpeg>=4.4",
+    "python>=3.10"
+  ],
+  "resources": {
+    "cpu": "4",
+    "memory": "8Gi",
+    "disk": "20Gi",
+    "gpu": false
+  },
+  "health_check": {
+    "endpoint": "/health",
+    "interval": 30
+  },
+  "notifications": {
+    "webhook_url": "",
+    "events": ["task.completed", "task.failed", "workflow.completed"]
+  }
+}

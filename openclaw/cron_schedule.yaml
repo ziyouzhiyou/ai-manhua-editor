@@ -1,0 +1,29 @@
+# OpenClaw Cron Schedule
+# Automated tasks for the AI Manhua Editor
+
+cron:
+  - name: "daily-cleanup"
+    schedule: "0 2 * * *"
+    command: "cleanup"
+    description: "Clean up old temporary files and cache"
+    enabled: true
+
+  - name: "health-check"
+    schedule: "*/5 * * * *"
+    command: "health"
+    description: "Periodic health check"
+    enabled: true
+
+  - name: "metrics-export"
+    schedule: "0 * * * *"
+    command: "export-metrics"
+    description: "Export metrics data"
+    enabled: true
+
+  - name: "project-archive"
+    schedule: "0 3 * * 0"
+    command: "archive-old-projects"
+    description: "Archive projects older than 30 days"
+    enabled: true
+    params:
+      max_age_days: 30

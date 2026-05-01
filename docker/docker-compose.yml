@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  ai-manhua-editor:
+    build: .
+    image: ai-manhua-editor:latest
+    container_name: ai-manhua-editor
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./output:/app/output
+      - ./temp:/app/temp
+      - ./cache:/app/cache
+      - ./projects:/app/projects
+      - ./.env:/app/.env:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+      - LOG_LEVEL=INFO
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - ai-manhua-network
+
+  # Optional: Redis for caching
+  redis:
+    image: redis:7-alpine
+    container_name: ai-manhua-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+    networks:
+      - ai-manhua-network
+
+volumes:
+  redis-data:
+
+networks:
+  ai-manhua-network:
+    driver: bridge

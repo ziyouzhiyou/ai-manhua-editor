@@ -1,0 +1,48 @@
+# AI Manhua Editor - Default Configuration
+# Copy this file and modify as needed
+
+# API Configuration
+mimo_api_key: "${MIMO_API_KEY:-}"
+mimo_base_url: "https://api.mimo.ai/v1"
+
+# Image Generation
+image_provider: "mimo"  # Options: mimo, stability, midjourney
+image_model: "mimo-image-v2"
+image_quality: "high"
+image_size: "1024x1024"
+
+# Text-to-Speech
+tts_provider: "mimo"  # Options: mimo, azure, elevenlabs
+tts_model: "mimo-tts-v1"
+tts_voice: "zh-CN-XiaoxiaoNeural"
+tts_speed: 1.0
+
+# Video Settings
+video_resolution: "1920x1080"
+video_fps: 24
+video_codec: "libx264"
+video_bitrate: "8M"
+
+# Workflow Settings
+default_workflow: "standard"
+max_concurrent_tasks: 5
+task_timeout: 300
+
+# Storage
+output_dir: "./output"
+temp_dir: "./temp"
+asset_cache_dir: "./cache"
+
+# OpenClaw Integration
+openclaw_enabled: true
+openclaw_gateway_url: "ws://localhost:18789"
+openclaw_skill_name: "ai-manhua-editor"
+
+# Logging
+log_level: "INFO"
+log_format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Advanced
+enable_gpu: false
+gpu_device: "cuda:0"
+memory_limit_gb: 8.0

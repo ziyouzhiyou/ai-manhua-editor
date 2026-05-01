@@ -1,0 +1,31 @@
+# OpenClaw Integration Configuration
+# For deployment in OpenClaw environment
+
+openclaw:
+  enabled: true
+  gateway_url: "ws://localhost:18789"
+  skill_name: "ai-manhua-editor"
+  skill_version: "1.0.0"
+
+  deployment:
+    type: "docker"
+    auto_restart: true
+    health_check_interval: 30
+
+  resources:
+    cpu_limit: "4"
+    memory_limit: "8Gi"
+    gpu_enabled: false
+
+  triggers:
+    - type: "cron"
+      schedule: "0 2 * * *"  # Daily at 2 AM
+      action: "cleanup"
+    - type: "webhook"
+      endpoint: "/webhook/generate"
+      action: "generate"
+
+  notifications:
+    on_complete: true
+    on_error: true
+    webhook_url: ""

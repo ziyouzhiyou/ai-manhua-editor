@@ -1,0 +1,67 @@
+{
+  "id": "fast-ai-manhua",
+  "name": "Fast AI Manhua Workflow",
+  "description": "Optimized for rapid production with medium quality",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "id": "parse_script",
+      "name": "Parse Script",
+      "agent_type": "script_parser",
+      "config": {"mode": "fast"},
+      "dependencies": [],
+      "max_retries": 1,
+      "timeout": 60
+    },
+    {
+      "id": "generate_storyboard",
+      "name": "Generate Storyboard",
+      "agent_type": "storyboard_agent",
+      "config": {"style": "anime", "quality": "medium"},
+      "dependencies": ["parse_script"],
+      "max_retries": 1,
+      "timeout": 120
+    },
+    {
+      "id": "generate_images",
+      "name": "Generate Images",
+      "agent_type": "image_generator",
+      "config": {"batch_size": 8, "quality": "medium", "fast_mode": true},
+      "dependencies": ["generate_storyboard"],
+      "max_retries": 2,
+      "timeout": 300
+    },
+    {
+      "id": "synthesize_voices",
+      "name": "Synthesize Voices",
+      "agent_type": "voice_synthesizer",
+      "config": {"voice_style": "natural", "language": "zh", "fast_mode": true},
+      "dependencies": ["parse_script"],
+      "max_retries": 1,
+      "timeout": 180
+    },
+    {
+      "id": "compose_video",
+      "name": "Compose Video",
+      "agent_type": "video_editor",
+      "config": {"resolution": "720p", "fps": 24, "simple_transitions": true},
+      "dependencies": ["generate_images", "synthesize_voices"],
+      "max_retries": 1,
+      "timeout": 300
+    },
+    {
+      "id": "generate_subtitles",
+      "name": "Generate Subtitles",
+      "agent_type": "subtitle_generator",
+      "config": {"style": "simple"},
+      "dependencies": ["compose_video"],
+      "max_retries": 1,
+      "timeout": 60
+    }
+  ],
+  "global_config": {
+    "output_format": "mp4",
+    "max_duration": 180,
+    "target_resolution": "1280x720"
+  }
+}

@@ -1,0 +1,74 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-manhua-editor"
+version = "1.0.0"
+description = "AI-powered comic drama (manhua) video generation system"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "AI Creator", email = "creator@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.5.0",
+    "python-multipart>=0.0.6",
+    "aiohttp>=3.9.0",
+    "aiofiles>=23.2.0",
+    "pyyaml>=6.0.1",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.24.0",
+    "pillow>=10.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "httpx>=0.25.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.7.0",
+]
+
+[project.scripts]
+ai-manhua = "src.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/ai-manhua-editor"
+Repository = "https://github.com/yourusername/ai-manhua-editor"
+Issues = "https://github.com/yourusername/ai-manhua-editor/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

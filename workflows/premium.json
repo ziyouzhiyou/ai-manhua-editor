@@ -1,0 +1,85 @@
+{
+  "id": "premium-ai-manhua",
+  "name": "Premium AI Manhua Workflow",
+  "description": "Maximum quality with cinematic production values",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "id": "parse_script",
+      "name": "Deep Script Analysis",
+      "agent_type": "script_parser",
+      "config": {"mode": "deep", "emotion_analysis": true, "character_profiles": true},
+      "dependencies": [],
+      "max_retries": 3,
+      "timeout": 180
+    },
+    {
+      "id": "generate_storyboard",
+      "name": "Cinematic Storyboard",
+      "agent_type": "storyboard_agent",
+      "config": {"style": "cinematic_anime", "quality": "ultra", "camera_moves": true},
+      "dependencies": ["parse_script"],
+      "max_retries": 3,
+      "timeout": 300
+    },
+    {
+      "id": "generate_images",
+      "name": "Ultra HD Image Generation",
+      "agent_type": "image_generator",
+      "config": {"batch_size": 2, "quality": "ultra", "upscale": true, "detail_enhancement": true},
+      "dependencies": ["generate_storyboard"],
+      "max_retries": 5,
+      "timeout": 1200
+    },
+    {
+      "id": "synthesize_voices",
+      "name": "Premium Voice Acting",
+      "agent_type": "voice_synthesizer",
+      "config": {"voice_style": "emotional", "language": "zh", "multi_speaker": true, "prosody": true},
+      "dependencies": ["parse_script"],
+      "max_retries": 3,
+      "timeout": 600
+    },
+    {
+      "id": "compose_video",
+      "name": "Cinematic Video Composition",
+      "agent_type": "video_editor",
+      "config": {"resolution": "4k", "fps": 60, "advanced_transitions": true, "color_grading": true, "sound_effects": true},
+      "dependencies": ["generate_images", "synthesize_voices"],
+      "max_retries": 2,
+      "timeout": 1200
+    },
+    {
+      "id": "generate_subtitles",
+      "name": "Stylized Subtitles",
+      "agent_type": "subtitle_generator",
+      "config": {"style": "cinematic", "animations": true, "effects": true},
+      "dependencies": ["compose_video"],
+      "max_retries": 3,
+      "timeout": 180
+    },
+    {
+      "id": "quality_check",
+      "name": "Rigorous Quality Assessment",
+      "agent_type": "quality_assessor",
+      "config": {"threshold": 0.95, "detailed_report": true},
+      "dependencies": ["generate_subtitles"],
+      "max_retries": 2,
+      "timeout": 120
+    },
+    {
+      "id": "auto_fix",
+      "name": "Auto Fix Issues",
+      "agent_type": "video_editor",
+      "config": {"mode": "fix", "quality_threshold": 0.95},
+      "dependencies": ["quality_check"],
+      "max_retries": 2,
+      "timeout": 600
+    }
+  ],
+  "global_config": {
+    "output_format": "mp4",
+    "max_duration": 600,
+    "target_resolution": "3840x2160"
+  }
+}

@@ -1,0 +1,76 @@
+# AI Manhua Editor - Prompt Templates
+# These prompts are optimized for MiMo V2.5 models
+
+script_parser:
+  system: |
+    你是一个专业的AI漫剧剧本解析专家。请分析以下文本，提取：
+    1. 所有角色信息（姓名、性别、年龄、外貌特征、性格）
+    2. 场景列表（场景编号、类型、场景描述、时间、地点、氛围）
+    3. 每个场景中的对话（说话人、台词、情感、语速）
+    4. 动作描述和镜头指示
+    5. 情感基调分析
+
+    请严格按照JSON格式输出，确保结构完整。
+
+  deep_analysis: |
+    请对以下剧本进行深度分析：
+    - 角色关系图谱
+    - 情感弧线
+    - 视觉风格建议
+    - 音乐氛围建议
+    - 分镜节奏建议
+
+storyboard:
+  system: |
+    你是一个专业的AI漫剧分镜师。根据场景描述，设计最佳的分镜方案。
+    对于每个分镜，提供：
+    1. 分镜描述（画面内容）
+    2. AI图像生成提示词（英文，详细描述画面构图、角色、表情、背景、光影）
+    3. 镜头角度
+    4. 镜头运动（如果有）
+    5. 持续时间（秒）
+    6. 转场类型
+
+    输出为JSON数组格式。
+
+  style_modifiers:
+    anime: "anime style, manga art, cel-shaded, vibrant colors, clean lines"
+    cinematic_anime: "cinematic anime, dramatic lighting, film grain, anime movie quality, detailed background"
+    manhua: "Chinese manhua style, ink wash influence, elegant linework, traditional Chinese aesthetics"
+    chibi: "chibi style, cute, super deformed, kawaii, colorful"
+    realistic: "photorealistic, detailed, lifelike, high detail, 8k"
+    watercolor: "watercolor painting, soft edges, artistic, painterly style"
+
+image_generation:
+  prompt_enhancement: |
+    Enhance the following image prompt for maximum quality.
+    Add details about lighting, composition, style, and atmosphere.
+    Keep the core subject intact while enriching the description.
+
+  negative_prompts: |
+    low quality, blurry, deformed, bad anatomy, watermark, signature, text,
+    cropped, out of frame, worst quality, jpeg artifacts, ugly, duplicate,
+    morbid, mutilated, extra fingers, mutated hands, poorly drawn hands,
+    poorly drawn face, mutation, deformed, extra limbs, extra arms,
+    extra legs, malformed limbs, fused fingers, too many fingers,
+    long neck, cross-eyed, mutated hands, polar lowres, bad face
+
+voice_synthesis:
+  emotion_mapping:
+    neutral: "Speak naturally with a calm tone"
+    happy: "Speak with an upbeat, cheerful tone"
+    sad: "Speak softly with a melancholic tone"
+    angry: "Speak with intensity and firmness"
+    excited: "Speak with enthusiasm and energy"
+    scared: "Speak with a trembling, fearful tone"
+    romantic: "Speak gently with warmth and affection"
+
+video_composition:
+  transition_descriptions:
+    cut: "Direct cut between scenes"
+    fade: "Smooth fade transition"
+    dissolve: "Cross dissolve between scenes"
+    wipe: "Wipe transition effect"
+    slide: "Slide transition"
+    zoom: "Zoom in/out transition"
+    blur: "Blur fade transition"

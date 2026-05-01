@@ -1,0 +1,76 @@
+{
+  "id": "standard-ai-manhua",
+  "name": "Standard AI Manhua Workflow",
+  "description": "Balanced quality and speed for standard comic drama production",
+  "version": "1.0.0",
+  "tasks": [
+    {
+      "id": "parse_script",
+      "name": "Parse Script",
+      "agent_type": "script_parser",
+      "config": {"mode": "standard", "language": "zh"},
+      "dependencies": [],
+      "max_retries": 2,
+      "timeout": 120
+    },
+    {
+      "id": "generate_storyboard",
+      "name": "Generate Storyboard",
+      "agent_type": "storyboard_agent",
+      "config": {"style": "anime", "quality": "high"},
+      "dependencies": ["parse_script"],
+      "max_retries": 2,
+      "timeout": 180
+    },
+    {
+      "id": "generate_images",
+      "name": "Generate Images",
+      "agent_type": "image_generator",
+      "config": {"batch_size": 4, "quality": "high"},
+      "dependencies": ["generate_storyboard"],
+      "max_retries": 3,
+      "timeout": 600
+    },
+    {
+      "id": "synthesize_voices",
+      "name": "Synthesize Voices",
+      "agent_type": "voice_synthesizer",
+      "config": {"voice_style": "dramatic", "language": "zh"},
+      "dependencies": ["parse_script"],
+      "max_retries": 2,
+      "timeout": 300
+    },
+    {
+      "id": "compose_video",
+      "name": "Compose Video",
+      "agent_type": "video_editor",
+      "config": {"resolution": "1080p", "fps": 24, "transition": "fade"},
+      "dependencies": ["generate_images", "synthesize_voices"],
+      "max_retries": 1,
+      "timeout": 600
+    },
+    {
+      "id": "generate_subtitles",
+      "name": "Generate Subtitles",
+      "agent_type": "subtitle_generator",
+      "config": {"style": "anime", "position": "bottom"},
+      "dependencies": ["compose_video"],
+      "max_retries": 2,
+      "timeout": 120
+    },
+    {
+      "id": "quality_check",
+      "name": "Quality Assessment",
+      "agent_type": "quality_assessor",
+      "config": {"threshold": 0.8},
+      "dependencies": ["generate_subtitles"],
+      "max_retries": 1,
+      "timeout": 60
+    }
+  ],
+  "global_config": {
+    "output_format": "mp4",
+    "max_duration": 300,
+    "target_resolution": "1920x1080"
+  }
+}

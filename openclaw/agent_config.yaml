@@ -1,0 +1,54 @@
+# OpenClaw Agent Configuration
+# This file configures how the skill behaves within OpenClaw
+
+agent:
+  name: "ai-manhua-editor"
+  version: "1.0.0"
+
+  runtime:
+    type: "python"
+    python_version: "3.11"
+    entry_module: "src.skills.openclaw_skill"
+    entry_class: "AIManhuaSkill"
+
+  environment:
+    variables:
+      - name: "MIMO_API_KEY"
+        required: true
+        secret: true
+      - name: "MIMO_BASE_URL"
+        required: false
+        default: "https://api.mimo.ai/v1"
+      - name: "LOG_LEVEL"
+        required: false
+        default: "INFO"
+      - name: "OUTPUT_DIR"
+        required: false
+        default: "./output"
+
+  capabilities:
+    - "text_generation"
+    - "image_generation"
+    - "speech_synthesis"
+    - "video_processing"
+
+  constraints:
+    max_concurrent_workflows: 3
+    max_workflow_duration: 3600
+    max_file_size: "100MB"
+    allowed_file_types: [".txt", ".md", ".json", ".yaml"]
+
+  logging:
+    level: "INFO"
+    format: "json"
+    output: "stdout"
+
+  metrics:
+    enabled: true
+    endpoint: "/metrics"
+
+  security:
+    sandbox_enabled: true
+    network_access: true
+    file_system_access: true
+    max_memory: "8Gi"

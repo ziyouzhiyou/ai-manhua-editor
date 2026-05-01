@@ -1,0 +1,85 @@
+{
+  "visual_styles": {
+    "anime": {
+      "name": "Anime",
+      "description": "Classic Japanese anime style",
+      "prompt_suffix": "anime style, manga art, cel-shaded, vibrant colors, clean lines",
+      "recommended_for": ["romance", "comedy", "school_life"]
+    },
+    "cinematic_anime": {
+      "name": "Cinematic Anime",
+      "description": "Movie-quality anime with dramatic lighting",
+      "prompt_suffix": "cinematic anime, dramatic lighting, film grain, anime movie quality, detailed background",
+      "recommended_for": ["action", "fantasy", "sci-fi"]
+    },
+    "manhua": {
+      "name": "Manhua",
+      "description": "Chinese comic style with traditional aesthetics",
+      "prompt_suffix": "Chinese manhua style, ink wash influence, elegant linework, traditional Chinese aesthetics",
+      "recommended_for": ["historical", "xianxia", "wuxia"]
+    },
+    "chibi": {
+      "name": "Chibi",
+      "description": "Cute super-deformed style",
+      "prompt_suffix": "chibi style, cute, super deformed, kawaii, colorful",
+      "recommended_for": ["comedy", "slice_of_life", "kids"]
+    },
+    "realistic": {
+      "name": "Realistic",
+      "description": "Photorealistic 3D rendering style",
+      "prompt_suffix": "photorealistic, detailed, lifelike, high detail, 8k",
+      "recommended_for": ["thriller", "mystery", "drama"]
+    },
+    "watercolor": {
+      "name": "Watercolor",
+      "description": "Artistic watercolor painting style",
+      "prompt_suffix": "watercolor painting, soft edges, artistic, painterly style",
+      "recommended_for": ["drama", "romance", "artistic"]
+    }
+  },
+  "subtitle_styles": {
+    "simple": {
+      "font": "Arial",
+      "size": 24,
+      "color": "#FFFFFF",
+      "outline": "#000000",
+      "outline_width": 2
+    },
+    "anime": {
+      "font": "Noto Sans CJK SC",
+      "size": 28,
+      "color": "#FFFFFF",
+      "outline": "#FF69B4",
+      "outline_width": 3,
+      "shadow": "#000000"
+    },
+    "cinematic": {
+      "font": "Noto Serif CJK SC",
+      "size": 26,
+      "color": "#F5F5F5",
+      "outline": "#1a1a1a",
+      "outline_width": 2
+    },
+    "comic": {
+      "font": "Comic Sans MS",
+      "size": 30,
+      "color": "#FFFF00",
+      "outline": "#000000",
+      "outline_width": 4
+    }
+  },
+  "voice_profiles": {
+    "zh-CN": {
+      "female_young": "zh-CN-XiaoxiaoNeural",
+      "female_gentle": "zh-CN-XiaoyiNeural",
+      "female_lively": "zh-CN-XiaohanNeural",
+      "male_young": "zh-CN-YunxiNeural",
+      "male_mature": "zh-CN-YunjianNeural",
+      "male_deep": "zh-CN-YunfengNeural"
+    },
+    "en-US": {
+      "female": "en-US-JennyNeural",
+      "male": "en-US-GuyNeural"
+    }
+  }
+}
