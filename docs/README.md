@@ -25,34 +25,30 @@ Premium - 高级模式（15-30分钟，4K cinematic）
 ### OpenClaw 部署
 bash
 复制
-# 安装技能
+## 安装技能
 openclaw skill install ./openclaw/skill_manifest.json
 
-# 使用技能生成视频
+## 使用技能生成视频
 @ai-manhua-editor generate --script "你的剧本.txt" --workflow standard --style anime
 
 ###Docker 部署
-bash
-复制
 ./scripts/setup.sh      # 初始化环境
 ./scripts/deploy.sh docker   # Docker部署
 ./scripts/start.sh dev       # 启动开发服务器
+./scripts/start.sh dev       # 启动开发服务器
 
 
-# 📁 项目结构亮点
-plain
-复制
+## 📁 项目结构亮点
 ai-manhua-editor/
 ├── src/
 │   ├── core/          # DAG工作流引擎（支持并行执行、重试、事件驱动）
 │   ├── agents/        # 7个专业AI代理
-│   ├── skills/        # /Stability/Azure API封装
+│   ├── skills/        # Stability/Azure API封装
 │   ├── web/           # FastAPI + WebSocket实时进度
 │   └── storage/       # 项目持久化与资产缓存
 ├── openclaw/          # OpenClaw技能配置清单
 ├── workflows/         # 三种工作流JSON定义
 ├── docker/            # Docker Compose部署
 └── docs/              # 完整架构文档与部署指南
-系统已配置好 API 的 OpenAI-compatible 接口，申请通过Token后只需在 .env 中填入 API_KEY 即可运行。
   
 </p>
